@@ -1,0 +1,100 @@
+@import "tailwindcss";
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0c;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #26262a;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #dc2626;
+}
+
+/* 3D Metallic Typography & Animations */
+.text-3d-metallic {
+  text-shadow: 
+    0 1px 0 #d1d5db,
+    0 2px 0 #9ca3af,
+    0 3px 0 #6b7280,
+    0 4px 0 #4b5563,
+    0 5px 0 #374151,
+    0 6px 1px rgba(0, 0, 0, 0.4),
+    0 0 15px rgba(255, 255, 255, 0.4),
+    0 10px 25px rgba(0, 0, 0, 0.8),
+    0 20px 35px rgba(239, 68, 68, 0.3);
+}
+
+.text-metallic-sheen {
+  background: linear-gradient(
+    135deg,
+    #ffffff 0%,
+    #f3f4f6 25%,
+    #e5e7eb 40%,
+    #ffffff 50%,
+    #9ca3af 60%,
+    #f9fafb 75%,
+    #ffffff 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shineReflection 6s linear infinite;
+}
+
+.animate-text-float {
+  animation: textFloat 5s ease-in-out infinite;
+  transform-style: preserve-3d;
+}
+
+@keyframes shineReflection {
+  0% {
+    background-position: 0% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+@keyframes textFloat {
+  0%, 100% {
+    transform: perspective(1000px) rotateY(-3deg) rotateX(2deg) translateY(0px);
+  }
+  50% {
+    transform: perspective(1000px) rotateY(-1deg) rotateX(1deg) translateY(-10px);
+  }
+}
+
+@keyframes arrowNudge {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(6px);
+  }
+}
+
+.animate-arrow-nudge {
+  animation: arrowNudge 1.5s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-text-float,
+  .text-metallic-sheen,
+  .animate-arrow-nudge {
+    animation: none !important;
+    transform: none !important;
+  }
+}
